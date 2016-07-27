@@ -1,0 +1,35 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "cv",
+      "otherEntityName": "donneesRubrique",
+      "otherEntityRelationshipName": "cv"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "collaborateur",
+      "otherEntityName": "collaborateur",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "dateCv",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160713094751",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "entityTableName": "cv"
+}

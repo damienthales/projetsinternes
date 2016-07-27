@@ -1,0 +1,22 @@
+
+<div>
+    <h2><span>Donnees Collaborateur</span> {{vm.donneesCollaborateur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Description Rubrique Collaborateur</span></dt>
+        <dd>
+            <span>{{vm.donneesCollaborateur.descriptionRubriqueCollaborateur}}</span>
+        </dd>
+        <dt><span>Rubrique</span></dt>
+        <dd>
+            <a ui-sref="rubrique-detail({id:vm.donneesCollaborateur.rubrique.id})">{{vm.donneesCollaborateur.rubrique.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,15 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "telephoneNumero",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160713094755",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "telephone"
+}

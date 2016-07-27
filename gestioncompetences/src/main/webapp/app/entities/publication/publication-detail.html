@@ -1,0 +1,26 @@
+
+<div>
+    <h2><span>Publication</span> {{vm.publication.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Publication Nom</span></dt>
+        <dd>
+            <span>{{vm.publication.publicationNom}}</span>
+        </dd>
+        <dt><span>Publication Date</span></dt>
+        <dd>
+            <span>{{vm.publication.publicationDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>Collaborateur</span></dt>
+        <dd>
+            <a ui-sref="collaborateur-detail({id:vm.publication.collaborateur.id})">{{vm.publication.collaborateur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

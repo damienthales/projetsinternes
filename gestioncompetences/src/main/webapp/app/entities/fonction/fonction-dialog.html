@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <div class="form-group" ng-show="vm.fonction.id">
+	    	<h4 class="modal-title" id="myFonctionLabel">Edition d'une fonction</h4>
+	    </div>
+	    <div class="form-group" ng-hide="vm.fonction.id">
+	    	<h4 class="modal-title" id="myFonctionLabel">Création d'une fonction</h4>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <input type="hidden" class="form-control" id="id" name="id" ng-model="vm.fonction.id" />
+        
+        <div class="form-group">
+            <label class="control-label" for="field_fonctionNom">Fonction Nom</label>
+            <input type="text" class="form-control" name="fonctionNom" id="field_fonctionNom"
+                    ng-model="vm.fonction.fonctionNom"
+                    required />
+            <div ng-show="editForm.fonctionNom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fonctionNom.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fonctionDateDebut">Fonction Date Debut</label>
+                <div class="input-group">
+                    <input id="field_fonctionDateDebut" type="text" class="form-control" name="fonctionDateDebut" datetime-picker="{{dateformat}}" ng-model="vm.fonction.fonctionDateDebut" is-open="vm.datePickerOpenStatus.fonctionDateDebut"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fonctionDateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.fonctionDateDebut.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fonctionDateDebut.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.fonctionDateDebut.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fonctionDateFin">Fonction Date Fin</label>
+                <div class="input-group">
+                    <input id="field_fonctionDateFin" type="text" class="form-control" name="fonctionDateFin" datetime-picker="{{dateformat}}" ng-model="vm.fonction.fonctionDateFin" is-open="vm.datePickerOpenStatus.fonctionDateFin"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fonctionDateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <input type="hidden" class="form-control" id="idCollaborateur" name="idCollaborateur" ng-model="vm.fonction.idCollaborateur" />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

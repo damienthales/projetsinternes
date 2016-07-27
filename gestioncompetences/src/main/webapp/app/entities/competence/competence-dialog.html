@@ -1,0 +1,59 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCompetenceLabel">Create or edit a Competence</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.competence.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.competence.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_competenceLibelle">Competence Libelle</label>
+            <input type="text" class="form-control" name="competenceLibelle" id="field_competenceLibelle"
+                    ng-model="vm.competence.competenceLibelle"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_competenceAnneesexperiences">Competence Anneesexperiences</label>
+            <input type="number" class="form-control" name="competenceAnneesexperiences" id="field_competenceAnneesexperiences"
+                    ng-model="vm.competence.competenceAnneesexperiences"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_competenceClient">Competence Client</label>
+            <input type="text" class="form-control" name="competenceClient" id="field_competenceClient"
+                    ng-model="vm.competence.competenceClient"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_competenceNiveaucompetence">Competence Niveaucompetence</label>
+            <select class="form-control" name="competenceNiveaucompetence" ng-model="vm.competence.competenceNiveaucompetence" id="field_competenceNiveaucompetence">
+                <option value="DECOUVRTE">DECOUVRTE</option>
+                <option value="OPERATIONNELLE">OPERATIONNELLE</option>
+                <option value="MAITRISE">MAITRISE</option>
+                <option value="EXPERT">EXPERT</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_collaborateur">Collaborateur</label>
+            <select class="form-control" id="field_collaborateur" name="collaborateur" ng-model="vm.competence.collaborateur" ng-options="collaborateur as collaborateur.id for collaborateur in vm.collaborateurs track by collaborateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+
+<div>
+    <h2><span>Cv</span> {{vm.cv.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Date Cv</span></dt>
+        <dd>
+            <span>{{vm.cv.dateCv | date:'medium'}}</span>
+        </dd>
+        <dt><span>Libelle</span></dt>
+        <dd>
+            <span>{{vm.cv.libelle}}</span>
+        </dd>
+        <dt><span>Collaborateur</span></dt>
+        <dd>
+            <a ui-sref="collaborateur-detail({id:vm.cv.collaborateur.id})">{{vm.cv.collaborateur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

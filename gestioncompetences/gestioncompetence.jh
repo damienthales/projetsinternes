@@ -1,0 +1,160 @@
+entity Collaborateur {
+	collaborateurNumeroTgi String required,
+	collaborateurMatricule String required,
+	collaborateurNom String required,
+	collaborateurPrenom String required,
+	collaborateurDateNaissance ZonedDateTime required,
+	collaborateurSexe Sexe required,
+	collaborateurEtatMarital EtatMarital required,
+	collaborateurNombreEnfant Integer,
+	collaborateurDateArrivee ZonedDateTime required,
+	collaborateurPhoto ImageBlob,
+	collaborateurLangue Langue
+}
+
+
+entity Adresse{
+	adresseNumero String required,
+	adresseVoie String required,
+	adresseVoie2 String,
+	adresseCodePostal String required,
+	adresseVille String required,
+	adressePays String
+}
+
+entity Fonction{
+	fonctionNom String required,
+	fonctionDateDebut ZonedDateTime required,
+	fonctionDateFin ZonedDateTime
+}
+
+enum EtatMarital{
+	CELIBATAIRE, PACSE, VIE_MARITAL, MARIE, AUTRE
+}
+
+enum Langue{
+	FRANCAIS, ANGLAIS, ALLEMAND, ESPAGNOL, AUTRE
+}
+
+enum Sexe{
+	MASCULIN, FEMININ
+}
+
+entity Classification{
+	classificationNom String required,
+	classificationDateDebut ZonedDateTime required,
+	classificationDateFin ZonedDateTime
+}
+
+entity Formation{
+	formationNom String required,
+	formationDate ZonedDateTime required,
+}
+
+entity Publication{
+	publicationNom String required,
+	publicationDate ZonedDateTime required,
+}
+
+entity Diplome{
+	diplomeNom String required,
+	diplomeDate ZonedDateTime required
+
+}
+
+entity Cv{
+	dateCv ZonedDateTime
+	libelle String
+}
+
+entity Rubrique{
+	rubriqueLibelle String required,
+	rubriqueTypeRubrique TypeRubrique,
+	rubriqueObligatoire Boolean
+}
+
+enum TypeRubrique{
+	COMPETENCE, PROFESSIONNELLE, EXTRA, HOBBIE
+}
+
+entity DonneesRubrique{
+	donneesRubriqueTitre String required,
+	donneesRubriqueOrdre Integer required,
+	donneesRubriqueDateDebut ZonedDateTime required,
+	donneesRubriqueDateFin ZonedDateTime,
+	donneesRubriquePoste String,
+	donneesRubriqueClient String,
+	donneesRubriqueNiveaucompetence NiveauCompetence,
+	donneesRubriqueDescription String maxlength(2056) required
+}
+
+enum NiveauCompetence{
+	DECOUVERTE, OPERATIONNELLE, MAITRISE, EXPERT
+}
+
+entity Email{
+	emailLibelle String
+}
+
+entity Telephone{
+	telephoneNumero String
+}
+
+relationship OneToMany {
+	Rubrique{sousRubrique} to Rubrique{}
+}
+
+relationship OneToMany {
+	Collaborateur{email} to Email{collaborateur}
+}
+
+relationship OneToMany {
+	Collaborateur{adresse} to Adresse{collaborateur}
+}
+
+relationship OneToMany {
+	Collaborateur{fonction} to Fonction{collaborateur}
+
+}
+
+relationship OneToMany {
+	Collaborateur{classification} to Classification{collaborateur}
+}
+
+relationship OneToMany {
+	Collaborateur{formation} to Formation{collaborateur}
+}
+
+
+relationship OneToMany {
+	Collaborateur{publication} to Publication{collaborateur}
+}
+
+relationship OneToMany {
+	Collaborateur{diplome} to Diplome{collaborateur}
+}
+
+relationship OneToMany {
+	Collaborateur{cv} to Cv{collaborateur}
+}
+
+relationship OneToMany {
+	Cv{cv} to DonneesRubrique{}
+}
+
+relationship OneToMany {
+	Rubrique{rubrique} to DonneesRubrique{}
+}
+
+
+paginate Collaborateur with infinite-scroll
+
+paginate Adresse with infinite-scroll
+
+paginate Classification with infinite-scroll
+
+paginate Fonction with infinite-scroll
+
+paginate Cv with infinite-scroll
+
+paginate Rubrique with infinite-scroll

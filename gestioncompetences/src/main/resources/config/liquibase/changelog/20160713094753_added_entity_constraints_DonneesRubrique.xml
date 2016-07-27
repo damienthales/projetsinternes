@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity DonneesRubrique.
+    -->
+    <changeSet id="20160713094753-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="cv_id"
+                                 baseTableName="donnees_rubrique"
+                                 constraintName="fk_donneesrubrique_cv_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cv"/>
+
+        <addForeignKeyConstraint baseColumnNames="rubrique_id"
+                                 baseTableName="donnees_rubrique"
+                                 constraintName="fk_donneesrubrique_rubrique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rubrique"/>
+
+    </changeSet>
+</databaseChangeLog>

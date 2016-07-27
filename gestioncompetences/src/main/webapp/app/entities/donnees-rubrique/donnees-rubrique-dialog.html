@@ -1,0 +1,140 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+         <div class="form-group" ng-show="vm.donneesRubrique.id">
+        	<h3 class="modal-title" id="myAdresseLabel">Edition d'une donnée</h3>
+	    </div>
+        <div class="form-group" ng-hide="vm.donneesRubrique.id">
+        	<h3 class="modal-title" id="myAdresseLabel">Création d'une donnée</h3>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <input type="hidden" class="form-control" id="id" name="id" ng-model="vm.donneesRubrique.id" />
+        
+        <div class="form-group row">
+	        <label class="col-sm-3 form-control-label" for="field_rubrique">Rubrique associée</label>
+	        <div class="col-sm-9">
+		        <select class="form-control" id="field_rubrique" name="rubrique" ng-model="vm.donneesRubrique.rubrique" ng-options="rubrique as rubrique.rubriqueLibelle for rubrique in vm.rubriques track by rubrique.id" required >
+		            <option value=""></option>
+		        </select>
+	        </div>
+	    </div>
+        
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label" for="field_donneesRubriqueTitre">Titre</label>
+            <div class="col-sm-9">
+	            <input type="text" class="form-control" name="donneesRubriqueTitre" id="field_donneesRubriqueTitre"
+	                    ng-model="vm.donneesRubrique.donneesRubriqueTitre" required />
+	            <div ng-show="editForm.donneesRubriqueTitre.$invalid">
+	                <p class="help-block" ng-show="editForm.donneesRubriqueTitre.$error.required">
+	                    This field is required.
+	                </p>
+	            </div>
+	        </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label" for="field_donneesRubriqueOrdre">Ordre d'affichage</label>
+        	<div class="col-sm-9">
+	            <input type="number" class="form-control" name="donneesRubriqueOrdre" id="field_donneesRubriqueOrdre"
+	                    ng-model="vm.donneesRubrique.donneesRubriqueOrdre" min="1"
+	                    required />
+	            <div ng-show="editForm.donneesRubriqueOrdre.$invalid">
+	                <p class="help-block" ng-show="editForm.donneesRubriqueOrdre.$error.required">
+	                    This field is required.
+	                </p>
+	            </div>
+	        </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label" for="field_donneesRubriqueDateDebut">Période du </label>
+            <div class="col-sm-4">
+	            <div class="input-group">
+	                <input id="field_donneesRubriqueDateDebut" type="text" class="form-control" name="donneesRubriqueDateDebut" datetime-picker="dd/MM/yyyy" ng-model="vm.donneesRubrique.donneesRubriqueDateDebut" 
+	                is-open="vm.datePickerOpenStatus.donneesRubriqueDateDebut"required />
+	                <span class="input-group-btn">
+	                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('donneesRubriqueDateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                </span>
+	            </div>
+	            <div ng-show="editForm.donneesRubriqueDateDebut.$invalid">
+	                <p class="help-block" ng-show="editForm.donneesRubriqueDateDebut.$error.required">
+	                    This field is required.
+	                </p>
+	                <p class="help-block" ng-show="editForm.donneesRubriqueDateDebut.$error.ZonedDateTimelocal">
+	                    This field should be a date and time.
+	                </p>
+	            </div>
+            </div>
+            <label class="col-sm-1 text-center" for="field_donneesRubriqueDateFin">au</label>
+            <div class="col-sm-4">
+	            <div class="input-group">
+	                <input id="field_donneesRubriqueDateFin" type="text" class="form-control" name="donneesRubriqueDateFin" datetime-picker="dd/MM/yyyy" ng-model="vm.donneesRubrique.donneesRubriqueDateFin" 
+	                is-open="vm.datePickerOpenStatus.donneesRubriqueDateFin"/>
+	                <span class="input-group-btn">
+	                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('donneesRubriqueDateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                </span>
+	            </div>
+	            <div ng-show="editForm.field_donneesRubriqueDateFin.$invalid">
+		            <p class="help-block" ng-show="editForm.field_donneesRubriqueDateFin.$error.ZonedDateTimelocal">
+		                This field should be a date and time.
+		            </p>
+		        </div>
+	        </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3" for="field_donneesRubriquePoste">Libellé du Poste</label>
+            <div class="col-sm-9">
+	            <input type="text" class="form-control" name="donneesRubriquePoste" id="field_donneesRubriquePoste"
+	                    ng-model="vm.donneesRubrique.donneesRubriquePoste" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3" for="field_donneesRubriqueClient">Client de la mission</label>
+            <div class="col-sm-9">
+	            <input type="text" class="form-control" name="donneesRubriqueClient" id="field_donneesRubriqueClient"
+	                    ng-model="vm.donneesRubrique.donneesRubriqueClient" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3" for="field_donneesRubriqueNiveaucompetence">Niveau de competence</label>
+            <div class="col-sm-9">
+	            <select class="form-control" name="donneesRubriqueNiveaucompetence" ng-model="vm.donneesRubrique.donneesRubriqueNiveaucompetence" id="field_donneesRubriqueNiveaucompetence">
+	                <option value="DECOUVERTE">DECOUVERTE</option>
+	                <option value="OPERATIONNELLE">OPERATIONNELLE</option>
+	                <option value="MAITRISE">MAITRISE</option>
+	                <option value="EXPERT">EXPERT</option>
+	            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label" for="field_donneesRubriqueDescription">Description</label>
+            <div class="col-sm-9">
+	            <textarea class="form-control" name="donneesRubriqueDescription" id="field_donneesRubriqueDescription"
+	                    ng-model="vm.donneesRubrique.donneesRubriqueDescription" required ng-maxlength="2056" />
+	            <div ng-show="editForm.donneesRubriqueDescription.$invalid">
+	                <p class="help-block" ng-show="editForm.donneesRubriqueDescription.$error.required">
+	                    This field is required.
+	                </p>
+	                <p class="help-block" ng-show="editForm.donneesRubriqueDescription.$error.maxlength">
+	                    This field cannot be longer than 2056 characters.
+	                </p>
+	            </div>
+            </div>
+        </div>
+        
+        <input type="hidden" class="form-control" id="field_idCv" name="idCv" ng-model="vm.donneesRubrique.idCv" />
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

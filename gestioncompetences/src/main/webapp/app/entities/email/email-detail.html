@@ -1,0 +1,22 @@
+
+<div>
+    <h2><span>Email</span> {{vm.email.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Email Libelle</span></dt>
+        <dd>
+            <span>{{vm.email.emailLibelle}}</span>
+        </dd>
+        <dt><span>Collaborateur</span></dt>
+        <dd>
+            <a ui-sref="collaborateur-detail({id:vm.email.collaborateur.id})">{{vm.email.collaborateur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

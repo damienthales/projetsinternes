@@ -1,0 +1,78 @@
+<div>
+    <h2>Donnees Rubriques</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="donnees-rubrique.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Donnees Rubrique
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Donnees Rubrique Titre</span></th>
+                    <th><span>Donnees Rubrique Ordre</span></th>
+                    <th><span>Donnees Rubrique Date Debut</span></th>
+                    <th><span>Donnees Rubrique Date Fin</span></th>
+                    <th><span>Donnees Rubrique Poste</span></th>
+                    <th><span>Donnees Rubrique Client</span></th>
+                    <th><span>Donnees Rubrique Niveaucompetence</span></th>
+                    <th><span>Donnees Rubrique Description</span></th>
+                    <th><span>Cv</span></th>
+                    <th><span>Rubrique</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="donneesRubrique in vm.donneesRubriques track by donneesRubrique.id">
+                    <td><a ui-sref="donnees-rubrique-detail({id:donneesRubrique.id})">{{donneesRubrique.id}}</a></td>
+                    <td>{{donneesRubrique.donneesRubriqueTitre}}</td>
+                    <td>{{donneesRubrique.donneesRubriqueOrdre}}</td>
+                    <td>{{donneesRubrique.donneesRubriqueDateDebut | date:'medium'}}</td>
+                    <td>{{donneesRubrique.donneesRubriqueDateFin | date:'medium'}}</td>
+                    <td>{{donneesRubrique.donneesRubriquePoste}}</td>
+                    <td>{{donneesRubrique.donneesRubriqueClient}}</td>
+                    <td translate="{{'gestioncompetencesApp.NiveauCompetence.' + donneesRubrique.donneesRubriqueNiveaucompetence}}">{{donneesRubrique.donneesRubriqueNiveaucompetence}}</td>
+                    <td>{{donneesRubrique.donneesRubriqueDescription}}</td>
+                    <td>
+                        <a ui-sref="cv-detail({id:donneesRubrique.cv.id})">{{donneesRubrique.cv.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="rubrique-detail({id:donneesRubrique.rubrique.id})">{{donneesRubrique.rubrique.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="donnees-rubrique-detail({id:donneesRubrique.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="donnees-rubrique.edit({id:donneesRubrique.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="donnees-rubrique.delete({id:donneesRubrique.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

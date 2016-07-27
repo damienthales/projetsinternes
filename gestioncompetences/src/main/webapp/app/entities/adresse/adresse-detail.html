@@ -1,0 +1,42 @@
+
+<div>
+    <h2><span>Adresse</span> {{vm.adresse.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Adresse Numero</span></dt>
+        <dd>
+            <span>{{vm.adresse.adresseNumero}}</span>
+        </dd>
+        <dt><span>Adresse Voie</span></dt>
+        <dd>
+            <span>{{vm.adresse.adresseVoie}}</span>
+        </dd>
+        <dt><span>Adresse Voie 2</span></dt>
+        <dd>
+            <span>{{vm.adresse.adresseVoie2}}</span>
+        </dd>
+        <dt><span>Adresse Code Postal</span></dt>
+        <dd>
+            <span>{{vm.adresse.adresseCodePostal}}</span>
+        </dd>
+        <dt><span>Adresse Ville</span></dt>
+        <dd>
+            <span>{{vm.adresse.adresseVille}}</span>
+        </dd>
+        <dt><span>Adresse Pays</span></dt>
+        <dd>
+            <span>{{vm.adresse.adressePays}}</span>
+        </dd>
+        <dt><span>Collaborateur</span></dt>
+        <dd>
+            <a ui-sref="collaborateur-detail({id:vm.adresse.collaborateur.id})">{{vm.adresse.collaborateur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,23 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "collaborateur",
+      "otherEntityName": "collaborateur",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "emailLibelle",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160713094754",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "email"
+}

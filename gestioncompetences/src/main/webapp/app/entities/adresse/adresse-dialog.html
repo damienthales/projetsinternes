@@ -1,0 +1,91 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <div class="form-group" ng-show="vm.adresse.id">
+        	<h4 class="modal-title" id="myAdresseLabel">Edition d'une adresse</h4>
+	    </div>
+        <div class="form-group" ng-hide="vm.adresse.id">
+        	<h4 class="modal-title" id="myAdresseLabel">Création d'une adresse</h4>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <input type="hidden" class="form-control" id="id" name="id" ng-model="vm.adresse.id" />
+        
+        <div class="form-group">
+            <label class="control-label" for="field_adresseNumero">Numero</label>
+            <input type="text" class="form-control" name="adresseNumero" id="field_adresseNumero"
+                    ng-model="vm.adresse.adresseNumero"
+                    required />
+            <div ng-show="editForm.adresseNumero.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.adresseNumero.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_adresseVoie">Voie</label>
+            <input type="text" class="form-control" name="adresseVoie" id="field_adresseVoie"
+                    ng-model="vm.adresse.adresseVoie"
+                    required />
+            <div ng-show="editForm.adresseVoie.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.adresseVoie.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_adresseVoie2">Voie 2</label>
+            <input type="text" class="form-control" name="adresseVoie2" id="field_adresseVoie2"
+                    ng-model="vm.adresse.adresseVoie2"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_adresseCodePostal">Code Postal</label>
+            <input type="text" class="form-control" name="adresseCodePostal" id="field_adresseCodePostal"
+                    ng-model="vm.adresse.adresseCodePostal"
+                    required />
+            <div ng-show="editForm.adresseCodePostal.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.adresseCodePostal.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_adresseVille">Ville</label>
+            <input type="text" class="form-control" name="adresseVille" id="field_adresseVille"
+                    ng-model="vm.adresse.adresseVille"
+                    required />
+            <div ng-show="editForm.adresseVille.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.adresseVille.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_adressePays">Pays</label>
+            <input type="text" class="form-control" name="adressePays" id="field_adressePays"
+                    ng-model="vm.adresse.adressePays"
+                     />
+        </div>
+        
+        <input type="hidden" class="form-control" id="field_idCollaborateur" name="idCollaborateur" ng-model="vm.adresse.idCollaborateur" />
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

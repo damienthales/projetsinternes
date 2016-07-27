@@ -1,0 +1,61 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <div class="form-group" ng-show="vm.rubrique.id">
+	    	<h4 class="modal-title" id="myRubriqueLabel">Edition d'une rubrique</h4>
+	    </div>
+	    <div class="form-group" ng-hide="vm.rubrique.id">
+	    	<h4 class="modal-title" id="myRubriqueLabel">Création d'une rubrique</h4>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <input type="hidden" class="form-control" id="id" name="id" ng-model="vm.rubrique.id" />
+        
+        <div class="form-group">
+            <label class="control-label" for="field_rubriqueLibelle">Libelle</label>
+            <input type="text" class="form-control" name="rubriqueLibelle" id="field_rubriqueLibelle"
+                    ng-model="vm.rubrique.rubriqueLibelle"
+                    required />
+            <div ng-show="editForm.rubriqueLibelle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rubriqueLibelle.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_rubriqueTypeRubrique">Type de rubrique</label>
+            <select class="form-control" name="rubriqueTypeRubrique" ng-model="vm.rubrique.rubriqueTypeRubrique" id="field_rubriqueTypeRubrique">
+                <option value="COMPETENCE">COMPETENCE</option>
+                <option value="PROFESSIONNELLE">PROFESSIONNELLE</option>
+                <option value="EXTRA">EXTRA</option>
+                <option value="HOBBIE">HOBBIE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_rubriqueObligatoire">Obligatoire</label>
+            <input type="checkbox" class="form-control" name="rubriqueObligatoire" id="field_rubriqueObligatoire"
+                    ng-model="vm.rubrique.rubriqueObligatoire"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_rubrique">Rubrique mère</label>
+            <select class="form-control" id="field_rubrique" name="rubrique" ng-model="vm.rubrique.rubrique" ng-options="rubrique as rubrique.rubriqueLibelle for rubrique in vm.rubriques track by rubrique.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

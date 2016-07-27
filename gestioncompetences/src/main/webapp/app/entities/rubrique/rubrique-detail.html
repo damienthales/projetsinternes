@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Rubrique</span></h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Libellé</span></dt>
+        <dd>
+            <span>{{vm.rubrique.rubriqueLibelle}}</span>
+        </dd>
+        <dt><span>Type de rubrique</span></dt>
+        <dd>
+            <span translate="{{'gestioncompetencesApp.TypeRubrique.' + vm.rubrique.rubriqueTypeRubrique}}">{{vm.rubrique.rubriqueTypeRubrique}}</span>
+        </dd>
+        <dt><span>Obligatoire</span></dt>
+        <dd>
+            <span ng-show="vm.rubrique.rubriqueObligatoire"><span class="glyphicon glyphicon-ok-circle text-success btn-xl"/></span>
+            <span ng-hide="vm.rubrique.rubriqueObligatoire"><span class="glyphicon glyphicon-remove-circle text-error btn-xl"/></span>
+        </dd>
+        <dt><span>Rubrique mère</span></dt>
+        <dd>
+            <a ui-sref="rubrique-detail({id:vm.rubrique.rubrique.id})">{{vm.rubrique.rubrique.rubriqueLibelle}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

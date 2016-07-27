@@ -1,0 +1,21 @@
+version: '2'
+services:
+    gestioncompetences-app:
+        image: gestioncompetences
+        external_links:
+            - gestioncompetences-postgresql:postgresql
+            - gestioncompetences-elasticsearch:elasticsearch
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/gestioncompetences
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    gestioncompetences-postgresql:
+        extends:
+            file: postgresql.yml
+            service: gestioncompetences-postgresql
+    gestioncompetences-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: gestioncompetences-elasticsearch

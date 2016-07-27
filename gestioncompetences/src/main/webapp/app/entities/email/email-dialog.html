@@ -1,0 +1,37 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+        <div class="form-group" ng-show="vm.email.id">
+	    	<h4 class="modal-title" id="myEmailLabel">Edition d'un Email</h4>
+	    </div>
+	    <div class="form-group" ng-hide="vm.email.id">
+	    	<h4 class="modal-title" id="myEmailLabel">Création d'un Email</h4>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <input type="hidden" class="form-control" id="id" name="id" ng-model="vm.email.id" />
+        
+        <div class="form-group">
+            <label class="control-label" for="field_emailLibelle">Email Libelle</label>
+            <input type="text" class="form-control" name="emailLibelle" id="field_emailLibelle"
+                    ng-model="vm.email.emailLibelle"
+                     />
+        </div>
+
+       
+        <input type="hidden" class="form-control" id="idCollaborateur" name="idCollaborateur" ng-model="vm.email.idCollaborateur" />
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

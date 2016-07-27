@@ -1,0 +1,51 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "rubrique",
+      "otherEntityName": "rubrique",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "sousRubrique",
+      "otherEntityName": "rubrique",
+      "otherEntityRelationshipName": "rubrique"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "rubrique",
+      "otherEntityName": "donneesRubrique",
+      "otherEntityRelationshipName": "rubrique"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "rubriqueLibelle",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "rubriqueTypeRubrique",
+      "fieldType": "TypeRubrique",
+      "fieldValues": "COMPETENCE,PROFESSIONNELLE,EXTRA,HOBBIE"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "rubriqueObligatoire",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20160713094752",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "entityTableName": "rubrique"
+}

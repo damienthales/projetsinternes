@@ -1,0 +1,94 @@
+<div>
+    <h2>Collaborateurs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="collaborateur.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs" >
+                        Create new Collaborateur
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurNom"><span>Collaborateur Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurPrenom"><span>Collaborateur Prenom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurDateNaissance"><span>Collaborateur Date Naissance</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurSexe"><span>Collaborateur Sexe</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurEtatMarital"><span>Collaborateur Etat Marital</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurNombreEnfant"><span>Collaborateur Nombre Enfant</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurDateArrivee"><span>Collaborateur Date Arrivee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurPhotos"><span>Collaborateur Photos</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="collaborateurLangue"><span>Collaborateur Langue</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="collaborateur in vm.collaborateurs track by collaborateur.id">
+                    <td><a ui-sref="collaborateur-detail({id:collaborateur.id})">{{collaborateur.id}}</a></td>
+                    <td>{{collaborateur.collaborateurNom}}</td>
+                    <td>{{collaborateur.collaborateurPrenom}}</td>
+                    <td>{{collaborateur.collaborateurDateNaissance | date:'medium'}}</td>
+                    <td translate="{{'gestioncompetencesApp.Sexe.' + collaborateur.collaborateurSexe}}">{{collaborateur.collaborateurSexe}}</td>
+                    <td translate="{{'gestioncompetencesApp.EtatMarital.' + collaborateur.collaborateurEtatMarital}}">{{collaborateur.collaborateurEtatMarital}}</td>
+                    <td>{{collaborateur.collaborateurNombreEnfant}}</td>
+                    <td>{{collaborateur.collaborateurDateArrivee | date:'medium'}}</td>
+                    <td>
+                        <a ng-if="collaborateur.collaborateurPhotos" ng-click="vm.openFile(collaborateur.collaborateurPhotosContentType, collaborateur.collaborateurPhotos)">
+                            <img data-ng-src="{{'data:' + collaborateur.collaborateurPhotosContentType + ';base64,' + collaborateur.collaborateurPhotos}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="collaborateur.collaborateurPhotos">{{collaborateur.collaborateurPhotosContentType}}, {{vm.byteSize(collaborateur.collaborateurPhotos)}}</span>
+                    </td>
+                    <td translate="{{'gestioncompetencesApp.Langue.' + collaborateur.collaborateurLangue}}">{{collaborateur.collaborateurLangue}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="collaborateur-detail({id:collaborateur.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="collaborateur.edit({id:collaborateur.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="collaborateur.delete({id:collaborateur.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

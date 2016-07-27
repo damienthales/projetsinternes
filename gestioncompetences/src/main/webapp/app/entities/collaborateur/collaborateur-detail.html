@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span>Collaborateur</span> {{vm.collaborateur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Collaborateur Numero Tgi</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurNumeroTgi}}</span>
+        </dd>
+        <dt><span>Collaborateur Matricule</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurMatricule}}</span>
+        </dd>
+        <dt><span>Collaborateur Nom</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurNom}}</span>
+        </dd>
+        <dt><span>Collaborateur Prenom</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurPrenom}}</span>
+        </dd>
+        <dt><span>Collaborateur Date Naissance</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurDateNaissance | date:'medium'}}</span>
+        </dd>
+        <dt><span>Collaborateur Sexe</span></dt>
+        <dd>
+            <span translate="{{'gestioncompetencesApp.Sexe.' + vm.collaborateur.collaborateurSexe}}">{{vm.collaborateur.collaborateurSexe}}</span>
+        </dd>
+        <dt><span>Collaborateur Etat Marital</span></dt>
+        <dd>
+            <span translate="{{'gestioncompetencesApp.EtatMarital.' + vm.collaborateur.collaborateurEtatMarital}}">{{vm.collaborateur.collaborateurEtatMarital}}</span>
+        </dd>
+        <dt><span>Collaborateur Nombre Enfant</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurNombreEnfant}}</span>
+        </dd>
+        <dt><span>Collaborateur Date Arrivee</span></dt>
+        <dd>
+            <span>{{vm.collaborateur.collaborateurDateArrivee | date:'medium'}}</span>
+        </dd>
+        <dt><span>Collaborateur Photos</span></dt>
+        <dd>
+            <div ng-if="vm.collaborateur.collaborateurPhotos">
+                <a ng-click="vm.openFile(vm.collaborateur.collaborateurPhotosContentType, vm.collaborateur.collaborateurPhotos)">
+                    <img data-ng-src="{{'data:' + vm.collaborateur.collaborateurPhotosContentType + ';base64,' + vm.collaborateur.collaborateurPhotos}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.collaborateur.collaborateurPhotosContentType}}, {{vm.byteSize(vm.collaborateur.collaborateurPhotos)}}
+            </div>
+        </dd>
+        <dt><span>Collaborateur Langue</span></dt>
+        <dd>
+            <span translate="{{'gestioncompetencesApp.Langue.' + vm.collaborateur.collaborateurLangue}}">{{vm.collaborateur.collaborateurLangue}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

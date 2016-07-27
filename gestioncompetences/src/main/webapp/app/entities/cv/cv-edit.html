@@ -1,0 +1,119 @@
+<div>
+	<div class="form-group" ng-show="vm.cv.id">
+		<h2 class="modal-title" id="myAdresseLabel">Edition d'un cv</h4>
+	</div>
+	<div class="form-group" ng-hide="vm.cv.id">
+		<h2 class="modal-title" id="myAdresseLabel">Création d'un cv</h4>
+	</div>
+    <hr>
+    
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()">
+    
+	    <dl class="dl-horizontal jh-entity-details">
+	    	
+    		<input type="hidden" class="form-control" id="id" name="id" ng-model="vm.cv.id" />
+    		
+    		<div class="form-group row">
+	            <label class="col-sm-2 form-control-label" for="field_libelle">Libelle</label>
+	            <div class="col-sm-6">
+	            	<input type="text" class="form-control" name="libelle" id="field_libelle" ng-model="vm.cv.libelle" required />
+	            </div>
+	        </div>
+	        <div class="form-group row">
+	            <label class="col-sm-2 form-control-label" for="field_dateCv">Date du CV</label>
+	            <div class="col-sm-6">
+	                <div class="input-group">
+	                    <input id="field_dateCv" type="text" class="form-control" name="dateCv" datetime-picker="dd/MM/yyyy" ng-model="vm.cv.dateCv" is-open="vm.datePickerOpenStatus.dateCv"
+	                    required />
+	                    <span class="input-group-btn">
+	                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCv')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                    </span>
+	                </div>
+		            <div ng-show="editForm.dateCv.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.dateCv.$error.required">
+		                    This field is required.
+		                </p>
+		                <p class="help-block"
+		                    ng-show="editForm.dateCv.$error.ZonedDateTimelocal">
+		                    This field should be a date and time.
+		                </p>
+		            </div>
+	            </div>
+	        </div>
+	        
+	        <input type="hidden" class="form-control" id="idCollaborateur" name="idCollaborateur" ng-model="vm.cv.idCollaborateur" readonly />
+	        
+	        <div class="table-responsive" ng-show="vm.cv.donnees">
+				<h4>
+					<span>Liste des données</span>
+				</h4>
+				<div class="container-fluid">
+			        <div class="row">
+			            <div class="col-xs-4 no-padding-left">
+			                <button type="submit" class="btn btn-primary" ui-sref="donnees-rubrique.new({idCv:vm.cv.id})" >
+			                    <span class="glyphicon glyphicon-plus">  Ajouter une nouvelle donnée</span>
+			                </button>
+			            </div>
+			        </div>
+			    </div>
+			    <br/>
+			    <table class="jh-table table table-striped">
+				    <thead>
+				    	<tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+				    		<th jh-sort-by="libelle"><span>Libellé</span> <span class="glyphicon glyphicon-sort"></th>
+				    		<th jh-sort-by="rubrique"><span>Rubrique associée</span> <span class="glyphicon glyphicon-sort"></th>
+			                <th jh-sort-by="dateCv"><span>Date de début</span> <span class="glyphicon glyphicon-sort"></th>
+			                <th jh-sort-by="ordre"><span>Ordre d'affichage</span> <span class="glyphicon glyphicon-sort"></th>
+			                <th></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <tr ng-repeat="donnee in vm.cv.donnees | orderBy : 'donneesRubriqueOrdre' track by donnee.id">
+			            	<td>{{donnee.donneesRubriqueTitre}}</td>
+			            	<td>{{donnee.rubrique.rubriqueLibelle}}</td>
+			                <td>{{donnee.donneesRubriqueDateDebut | date:'dd/MM/yyyy'}}</td>
+			                <td>{{donnee.donneesRubriqueOrdre}}</td>
+			                <td class="text-right">
+			                    <div class="btn-group flex-btn-group-container">
+				                    <button type="submit"
+			                                ui-sref="donnees-rubrique.edit({idDonneeRubrique:donnee.id})"
+			                                class="btn btn-primary btn-sm" title="Modification">
+			                            <span class="glyphicon glyphicon-pencil"></span>
+			                            <span class="hidden-xs hidden-sm"></span>
+			                        </button>
+			                        <button type="submit"
+			                                ui-sref="donnees-rubrique.delete({idDonneeRubrique:donnee.id})"
+			                                class="btn btn-danger btn-sm" title="Suppression" ng-hide="donnee.rubrique.rubriqueObligatoire">
+			                            <span class="glyphicon glyphicon-remove-circle"></span>
+			                            <span class="hidden-xs hidden-sm"></span>
+			                        </button>
+			                    </div>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			</div>
+	    	
+	    </dl>
+	    
+	    <button type="submit" ui-sref="gestion-collaborateurs-detail({id:vm.cv.idCollaborateur})" data-ui-sref-opts="{reload: true}" class="btn btn-info">
+		    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Retour</span>
+		</button>
+	    <button type="button" class="btn btn-default pull-right" data-dismiss="modal" ng-click="vm.clear()">
+		    <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+		</button>
+		<button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary pull-right">
+		    <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+		</button>
+    
+    </form>
+    
+    <script>
+	$('#btnDonneesCV').click(function(){
+		$('#listeDonneesCV').slideToggle();
+    	$('#chevronListeDonneesCV').toggleClass("glyphicon-chevron-up glyphicon-chevron-down")
+    });
+</script>
+    
+</div>

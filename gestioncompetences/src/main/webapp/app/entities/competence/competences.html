@@ -1,0 +1,66 @@
+<div>
+    <h2>Competences</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="competence.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Competence
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Competence Libelle</span></th>
+                    <th><span>Competence Anneesexperiences</span></th>
+                    <th><span>Competence Client</span></th>
+                    <th><span>Competence Niveaucompetence</span></th>
+                    <th><span>Collaborateur</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="competence in vm.competences track by competence.id">
+                    <td><a ui-sref="competence-detail({id:competence.id})">{{competence.id}}</a></td>
+                    <td>{{competence.competenceLibelle}}</td>
+                    <td>{{competence.competenceAnneesexperiences}}</td>
+                    <td>{{competence.competenceClient}}</td>
+                    <td translate="{{'gestioncompetencesApp.Niveaucompetence.' + competence.competenceNiveaucompetence}}">{{competence.competenceNiveaucompetence}}</td>
+                    <td>
+                        <a ui-sref="collaborateur-detail({id:competence.collaborateur.id})">{{competence.collaborateur.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="competence-detail({id:competence.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="competence.edit({id:competence.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="competence.delete({id:competence.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

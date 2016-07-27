@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span>Donnees Rubrique</span> {{vm.donneesRubrique.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Donnees Rubrique Titre</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriqueTitre}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Ordre</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriqueOrdre}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Date Debut</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriqueDateDebut | date:'medium'}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Date Fin</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriqueDateFin | date:'medium'}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Poste</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriquePoste}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Client</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriqueClient}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Niveaucompetence</span></dt>
+        <dd>
+            <span translate="{{'gestioncompetencesApp.NiveauCompetence.' + vm.donneesRubrique.donneesRubriqueNiveaucompetence}}">{{vm.donneesRubrique.donneesRubriqueNiveaucompetence}}</span>
+        </dd>
+        <dt><span>Donnees Rubrique Description</span></dt>
+        <dd>
+            <span>{{vm.donneesRubrique.donneesRubriqueDescription}}</span>
+        </dd>
+        <dt><span>Cv</span></dt>
+        <dd>
+            <a ui-sref="cv-detail({id:vm.donneesRubrique.cv.id})">{{vm.donneesRubrique.cv.id}}</a>
+        </dd>
+        <dt><span>Rubrique</span></dt>
+        <dd>
+            <a ui-sref="rubrique-detail({id:vm.donneesRubrique.rubrique.id})">{{vm.donneesRubrique.rubrique.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

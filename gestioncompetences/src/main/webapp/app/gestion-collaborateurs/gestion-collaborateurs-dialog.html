@@ -1,0 +1,180 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <div class="form-group" ng-show="vm.collaborateur.id">
+	    	<h4 class="modal-title" id="myAdresseLabel">Edition d'un collaborateur</h4>
+	    </div>
+	    <div class="form-group" ng-hide="vm.collaborateur.id">
+	    	<h4 class="modal-title" id="myAdresseLabel">Création d'un collaborateur</h4>
+	    </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurNom">Nom</label>
+            <input type="text" class="form-control" name="collaborateurNom" id="field_collaborateurNom"
+                    ng-model="vm.collaborateur.collaborateurNom"
+                    required />
+            <div ng-show="editForm.collaborateurNom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.collaborateurNom.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurPrenom">Prenom</label>
+            <input type="text" class="form-control" name="collaborateurPrenom" id="field_collaborateurPrenom"
+                    ng-model="vm.collaborateur.collaborateurPrenom"
+                    required />
+            <div ng-show="editForm.collaborateurPrenom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.collaborateurPrenom.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+	        <label class="control-label" for="field_collaborateurNumeroTgi">TGI</label>
+	        <input type="text" class="form-control" name="collaborateurNumeroTgi" id="field_collaborateurNumeroTgi"
+	                ng-model="vm.collaborateur.collaborateurNumeroTgi"
+	                required />
+	        <div ng-show="editForm.collaborateurNumeroTgi.$invalid">
+	            <p class="help-block"
+	                ng-show="editForm.collaborateurNumeroTgi.$error.required">
+	                This field is required.
+	            </p>
+	        </div>
+	    </div>
+	    <div class="form-group">
+	        <label class="control-label" for="field_collaborateurMatricule">Matricule</label>
+	        <input type="text" class="form-control" name="collaborateurMatricule" id="field_collaborateurMatricule"
+	                ng-model="vm.collaborateur.collaborateurMatricule"
+	                required />
+	        <div ng-show="editForm.collaborateurMatricule.$invalid">
+	            <p class="help-block"
+	                ng-show="editForm.collaborateurMatricule.$error.required">
+	                This field is required.
+	            </p>
+	        </div>
+	    </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurDateNaissance">Date de Naissance</label>
+                <div class="input-group">
+                    <input id="field_collaborateurDateNaissance" type="text" class="form-control" name="collaborateurDateNaissance" datetime-picker="{{dateformat}}" ng-model="vm.collaborateur.collaborateurDateNaissance" is-open="vm.datePickerOpenStatus.collaborateurDateNaissance"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('collaborateurDateNaissance')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.collaborateurDateNaissance.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.collaborateurDateNaissance.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.collaborateurDateNaissance.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurSexe">Sexe</label>
+            <select class="form-control" name="collaborateurSexe" ng-model="vm.collaborateur.collaborateurSexe" id="field_collaborateurSexe" required>
+                <option value="MASCULIN">MASCULIN</option>
+                <option value="FEMININ">FEMININ</option>
+            </select>
+            <div ng-show="editForm.collaborateurSexe.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.collaborateurSexe.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurEtatMarital">Etat Marital</label>
+            <select class="form-control" name="collaborateurEtatMarital" ng-model="vm.collaborateur.collaborateurEtatMarital" id="field_collaborateurEtatMarital" required>
+                <option value="CELIBATAIRE">CELIBATAIRE</option>
+                <option value="PACSE">PACSE</option>
+                <option value="VIE_MARITALE">VIE MARITALE</option>
+                <option value="MARIE">MARIE</option>
+            </select>
+            <div ng-show="editForm.collaborateurEtatMarital.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.collaborateurEtatMarital.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurNombreEnfant">Nombre d'enfant</label>
+            <input type="number" class="form-control" name="collaborateurNombreEnfant" id="field_collaborateurNombreEnfant"
+                    ng-model="vm.collaborateur.collaborateurNombreEnfant"
+                    min="0" ng-init="vm.collaborateur.collaborateurNombreEnfant=0" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurDateArrivee">Date d'arrivee</label>
+                <div class="input-group">
+                    <input id="field_collaborateurDateArrivee" type="text" class="form-control" name="collaborateurDateArrivee" datetime-picker="{{dateformat}}" ng-model="vm.collaborateur.collaborateurDateArrivee" is-open="vm.datePickerOpenStatus.collaborateurDateArrivee"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('collaborateurDateArrivee')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.collaborateurDateArrivee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.collaborateurDateArrivee.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.collaborateurDateArrivee.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setCollaborateurPhotos($file, vm.collaborateur)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_collaborateurPhotos">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.collaborateur.collaborateurPhotosContentType + ';base64,' + vm.collaborateur.collaborateurPhotos}}" style="max-height: 100px;" ng-if="vm.collaborateur.collaborateurPhotos"/>
+                <div ng-if="vm.collaborateur.collaborateurPhotos" class="help-block clearfix">
+                    <span class="pull-left">{{vm.collaborateur.collaborateurPhotosContentType}}, {{vm.byteSize(vm.collaborateur.collaborateurPhotos)}}</span>
+                    <button ng-click="vm.collaborateur.collaborateurPhotos=null;vm.collaborateur.collaborateurPhotosContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setCollaborateurPhotos($file, vm.collaborateur)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="collaborateurPhotos" id="field_collaborateurPhotos"
+                    ng-model="vm.collaborateur.collaborateurPhotos"
+                     />
+            <input type="hidden" class="form-control" name="collaborateurPhotosContentType" id="field_collaborateurPhotosContentType"
+                    ng-model="vm.collaborateur.collaborateurPhotosContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collaborateurLangue">Langue</label>
+            <select class="form-control" name="collaborateurLangue" ng-model="vm.collaborateur.collaborateurLangue" id="field_collaborateurLangue">
+                <option value="FRANCAIS">FRANCAIS</option>
+                <option value="ANGLAIS">ANGLAIS</option>
+                <option value="ALLEMAND">ALLEMAND</option>
+                <option value="ESPAGNOL">ESPAGNOL</option>
+                <option value="AUTRE">AUTRE</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

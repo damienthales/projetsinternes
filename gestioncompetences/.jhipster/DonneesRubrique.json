@@ -1,0 +1,80 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "cv",
+      "otherEntityName": "cv",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "rubrique",
+      "otherEntityName": "rubrique",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "donneesRubriqueTitre",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "donneesRubriqueOrdre",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "donneesRubriqueDateDebut",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "donneesRubriqueDateFin",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "donneesRubriquePoste",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "donneesRubriqueClient",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "donneesRubriqueNiveaucompetence",
+      "fieldType": "NiveauCompetence",
+      "fieldValues": "DECOUVERTE,OPERATIONNELLE,MAITRISE,EXPERT"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "donneesRubriqueDescription",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength",
+        "required"
+      ],
+      "fieldValidateRulesMaxlength": 2056
+    }
+  ],
+  "changelogDate": "20160713094753",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "donnees_rubrique"
+}
