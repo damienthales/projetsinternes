@@ -72,13 +72,15 @@
 	        </div>
 	    </div>
         <div class="form-group row">
-            <label class="form-control-label col-sm-4" for="field_collaborateurDateNaissance">Date de Naissance</label>
-            <div class="col-sm-4 input-group">
-                    <input id="field_collaborateurDateNaissance" type="text" class="form-control" name="collaborateurDateNaissance" datetime-picker="{{dateformat}}" ng-model="vm.collaborateur.collaborateurDateNaissance" is-open="vm.datePickerOpenStatus.collaborateurDateNaissance"
-                    required  />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('collaborateurDateNaissance')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+            <label class="form-control-label col-sm-3" for="field_collaborateurDateNaissance">Date de Naissance</label>
+            <div class="col-sm-6">
+	            <div class="input-group">
+	                    <input id="field_collaborateurDateNaissance" type="text" class="form-control" name="collaborateurDateNaissance" datetime-picker="{{dateformat}}" ng-model="vm.collaborateur.collaborateurDateNaissance" is-open="vm.datePickerOpenStatus.collaborateurDateNaissance"
+	                    required  />
+	                    <span class="input-group-btn">
+	                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('collaborateurDateNaissance')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                    </span>
+	             </div>
              </div>
 		     <div ng-show="editForm.collaborateurDateNaissance.$invalid">
 	                <p class="help-block"
@@ -121,7 +123,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="form-control-label col-sm-5" for="field_collaborateurNombreEnfant">Nombre d'enfant</label>
+            <label class="form-control-label col-sm-3" for="field_collaborateurNombreEnfant">Nombre d'enfant</label>
             <div class="col-sm-2">
             	<input type="number" class="form-control" name="collaborateurNombreEnfant" id="field_collaborateurNombreEnfant"
                     ng-model="vm.collaborateur.collaborateurNombreEnfant"
@@ -129,14 +131,16 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="form-control-label col-sm-4 for="field_collaborateurDateArrivee">Date d'arrivee</label>
-            <div class="input-group  col-sm-4">
-                <input id="field_collaborateurDateArrivee" type="text" class="form-control" name="collaborateurDateArrivee" datetime-picker="{{dateformat}}" ng-model="vm.collaborateur.collaborateurDateArrivee" is-open="vm.datePickerOpenStatus.collaborateurDateArrivee"
-                required  />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('collaborateurDateArrivee')"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </div>
+            <label class="form-control-label col-sm-3 for="field_collaborateurDateArrivee">Date d'arrivee</label>
+            <div class="col-sm-6">
+	            <div class="input-group">
+	                <input id="field_collaborateurDateArrivee" type="text" class="form-control" name="collaborateurDateArrivee" datetime-picker="{{dateformat}}" ng-model="vm.collaborateur.collaborateurDateArrivee" is-open="vm.datePickerOpenStatus.collaborateurDateArrivee"
+	                required  />
+	                <span class="input-group-btn">
+	                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('collaborateurDateArrivee')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                </span>
+	            </div>
+	            </div>
             <div ng-show="editForm.collaborateurDateArrivee.$invalid">
                 <p class="help-block col-sm-3"
                     ng-show="editForm.collaborateurDateArrivee.$error.ZonedDateTimelocal">
@@ -145,30 +149,32 @@
             </div>
         </div>
         <div class="form-group row" ngf-drop ngf-change="vm.setCollaborateurPhotos($file, vm.collaborateur)" ngf-pattern="'image/*'">
-            <label class="form-control-label col-sm-5" for="field_collaborateurPhotos">Photo</label>
-            <div class="input-group  col-sm-3">
-                <img data-ng-src="{{'data:' + vm.collaborateur.collaborateurPhotosContentType + ';base64,' + vm.collaborateur.collaborateurPhotos}}" style="max-height: 100px;" ng-if="vm.collaborateur.collaborateurPhotos"/>
-                <div ng-if="vm.collaborateur.collaborateurPhotos" class="help-block clearfix">
-                    <span class="pull-left">{{vm.collaborateur.collaborateurPhotosContentType}}, {{vm.byteSize(vm.collaborateur.collaborateurPhotos)}}</span>
-                    <button ng-click="vm.collaborateur.collaborateurPhotos=null;vm.collaborateur.collaborateurPhotosContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="file" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setCollaborateurPhotos($file, vm.collaborateur)" accept="image/*">
-                    Add image
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="collaborateurPhotos" id="field_collaborateurPhotos"
-                    ng-model="vm.collaborateur.collaborateurPhotos"
-                     />
-            <input type="hidden" class="form-control" name="collaborateurPhotosContentType" id="field_collaborateurPhotosContentType"
-                    ng-model="vm.collaborateur.collaborateurPhotosContentType" />
+            <label class="form-control-label col-sm-3" for="field_collaborateurPhotos">Photo</label>
+            <div class="col-sm-6">
+	            <div class="input-group">
+	                <img data-ng-src="{{'data:' + vm.collaborateur.collaborateurPhotosContentType + ';base64,' + vm.collaborateur.collaborateurPhotos}}" style="max-height: 100px;" ng-if="vm.collaborateur.collaborateurPhotos"/>
+	                <div ng-if="vm.collaborateur.collaborateurPhotos" class="help-block clearfix">
+	                    <span class="pull-left">{{vm.collaborateur.collaborateurPhotosContentType}}, {{vm.byteSize(vm.collaborateur.collaborateurPhotos)}}</span>
+	                    <button ng-click="vm.collaborateur.collaborateurPhotos=null;vm.collaborateur.collaborateurPhotosContentType=null;"
+	                            class="btn btn-default btn-xs pull-right">
+	                        <span class="glyphicon glyphicon-remove"></span>
+	                    </button>
+	                </div>
+	                <button type="file" ngf-select class="btn btn-default btn-block"
+	                        ngf-change="vm.setCollaborateurPhotos($file, vm.collaborateur)" accept="image/*">
+	                    Add image
+	                </button>
+		            <input type="hidden" class="form-control" name="collaborateurPhotos" id="field_collaborateurPhotos"
+		                    ng-model="vm.collaborateur.collaborateurPhotos"
+		                     />
+		            <input type="hidden" class="form-control" name="collaborateurPhotosContentType" id="field_collaborateurPhotosContentType"
+		                    ng-model="vm.collaborateur.collaborateurPhotosContentType" />
+	            </div>
+	            </div>
         </div>
         <div class="form-group row">
             <label class="form-control-label col-sm-3" for="field_collaborateurLangue">Langue</label>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
 	            <select class="form-control" name="collaborateurLangue" ng-model="vm.collaborateur.collaborateurLangue" id="field_collaborateurLangue">
 	                <option value="FRANCAIS">FRANCAIS</option>
 	                <option value="ANGLAIS">ANGLAIS</option>
