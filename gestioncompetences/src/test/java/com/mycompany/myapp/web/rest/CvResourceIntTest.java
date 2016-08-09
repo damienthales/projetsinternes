@@ -80,8 +80,8 @@ public class CvResourceIntTest {
     @Before
     public void initTest() {
         cv = new Cv();
-        cv.setDateCv(DEFAULT_DATE_CV);
-        cv.setLibelle(DEFAULT_LIBELLE);
+        cv.setCvDate(DEFAULT_DATE_CV);
+        cv.setCvLibelle(DEFAULT_LIBELLE);
     }
 
     @Test
@@ -100,8 +100,8 @@ public class CvResourceIntTest {
         List<Cv> cvs = cvRepository.findAll();
         assertThat(cvs).hasSize(databaseSizeBeforeCreate + 1);
         Cv testCv = cvs.get(cvs.size() - 1);
-        assertThat(testCv.getDateCv()).isEqualTo(DEFAULT_DATE_CV);
-        assertThat(testCv.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
+        assertThat(testCv.getCvDate()).isEqualTo(DEFAULT_DATE_CV);
+        assertThat(testCv.getCvLibelle()).isEqualTo(DEFAULT_LIBELLE);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class CvResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(cv.getId().intValue())))
-                .andExpect(jsonPath("$.[*].dateCv").value(hasItem(DEFAULT_DATE_CV_STR)))
+                .andExpect(jsonPath("$.[*].cvDate").value(hasItem(DEFAULT_DATE_CV_STR)))
                 .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())));
     }
 
@@ -130,7 +130,7 @@ public class CvResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(cv.getId().intValue()))
-            .andExpect(jsonPath("$.dateCv").value(DEFAULT_DATE_CV_STR))
+            .andExpect(jsonPath("$.cvDate").value(DEFAULT_DATE_CV_STR))
             .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()));
     }
 
@@ -152,8 +152,8 @@ public class CvResourceIntTest {
         // Update the cv
         Cv updatedCv = new Cv();
         updatedCv.setId(cv.getId());
-        updatedCv.setDateCv(UPDATED_DATE_CV);
-        updatedCv.setLibelle(UPDATED_LIBELLE);
+        updatedCv.setCvDate(UPDATED_DATE_CV);
+        updatedCv.setCvLibelle(UPDATED_LIBELLE);
 
         restCvMockMvc.perform(put("/api/cvs")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -164,8 +164,8 @@ public class CvResourceIntTest {
         List<Cv> cvs = cvRepository.findAll();
         assertThat(cvs).hasSize(databaseSizeBeforeUpdate);
         Cv testCv = cvs.get(cvs.size() - 1);
-        assertThat(testCv.getDateCv()).isEqualTo(UPDATED_DATE_CV);
-        assertThat(testCv.getLibelle()).isEqualTo(UPDATED_LIBELLE);
+        assertThat(testCv.getCvDate()).isEqualTo(UPDATED_DATE_CV);
+        assertThat(testCv.getCvLibelle()).isEqualTo(UPDATED_LIBELLE);
     }
 
     @Test

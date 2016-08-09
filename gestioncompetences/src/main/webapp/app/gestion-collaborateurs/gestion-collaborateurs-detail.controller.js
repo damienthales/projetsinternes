@@ -16,15 +16,15 @@
         
         vm.predicateAdresse = 'id';
         vm.resetAdresse = resetAdresse;
-        vm.reverseAdresse = true;
+        vm.reverseAdresse = true;        
+        vm.generate = generate;
+        
 
         var unsubscribe = $rootScope.$on('gestioncompetencesApp:collaborateurUpdate', function(event, result) {
             vm.collaborateur = result;
         });
         $scope.$on('$destroy', unsubscribe);
         
-        
-        sort();
         
         function sort() {
             var result = [vm.predicateAdresse + ',' + (vm.reverseAdresse ? 'asc' : 'desc')];
@@ -35,7 +35,25 @@
         }
         function resetAdresse() {
             vm.page = 0;
-            vm.collaborateurs = [];
+        }
+        
+        function generate(id, isPdf) {
+        	if (isPdf) {
+        		alert("Hello! Génération en PDF pour " + id + " !!");
+        	}
+        	else {
+        		alert("Hello! Génération en DOCX pour " + id + " !!");
+        	}
+        	vm.isDownloading = true;
+        	Cv.download(id, isPdf, onDownloadSuccess, onDownloadError);
+        }
+        
+        function onDownloadSuccess (result) {
+            vm.isDownloading = false;
+        }
+
+        function onDownloadError () {
+            vm.isDownloading = false;
         }
     }
 })();

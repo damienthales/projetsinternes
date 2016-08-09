@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity DonneesRubrique.
     -->
-    <changeSet id="20160713094753-2" author="jhipster">
+    <changeSet id="20160810115223-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="cv_id"
                                  baseTableName="donnees_rubrique"

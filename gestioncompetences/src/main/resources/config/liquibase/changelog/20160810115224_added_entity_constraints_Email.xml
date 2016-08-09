@@ -4,15 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <!--
-        Added the constraints for entity Rubrique.
+        Added the constraints for entity Email.
     -->
-    <changeSet id="20160713094752-2" author="jhipster">
+    <changeSet id="20160810115224-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="rubrique_id"
-                                 baseTableName="rubrique"
-                                 constraintName="fk_rubrique_rubrique_id"
+        <addForeignKeyConstraint baseColumnNames="collaborateur_id"
+                                 baseTableName="email"
+                                 constraintName="fk_email_collaborateur_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="rubrique"/>
+                                 referencedTableName="collaborateur"/>
 
     </changeSet>
 </databaseChangeLog>

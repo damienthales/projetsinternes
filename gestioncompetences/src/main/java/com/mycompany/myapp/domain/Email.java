@@ -25,6 +25,9 @@ public class Email implements Serializable {
 
     @Column(name = "email_libelle")
     private String emailLibelle;
+    
+    @Column(name = "email_is_principale")
+    private Boolean emailPrincipale;
 
     @NotNull
     @Column(name = "collaborateur_id", nullable = false)
@@ -45,6 +48,14 @@ public class Email implements Serializable {
     public void setEmailLibelle(String emailLibelle) {
         this.emailLibelle = emailLibelle;
     }
+
+	public Boolean getEmailPrincipale() {
+		return emailPrincipale;
+	}
+
+	public void setEmailPrincipale(Boolean emailPrincipale) {
+		this.emailPrincipale = emailPrincipale;
+	}
 
 	public Long getIdCollaborateur() {
 		return idCollaborateur;

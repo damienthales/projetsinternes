@@ -14,41 +14,17 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Adresse.
+        Added the entity Telephone.
     -->
-    <changeSet id="20160713094745-1" author="jhipster">
-        <createTable tableName="adresse">
+    <changeSet id="20160810115225-1" author="jhipster">
+        <createTable tableName="telephone">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="adresse_numero" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            
-            <column name="adresse_voie" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            
-            <column name="adresse_voie_2" type="varchar(255)">
+            <column name="telephone_numero" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
-            <column name="adresse_code_postal" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            
-            <column name="adresse_ville" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            
-            <column name="adresse_pays" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="collaborateur_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         

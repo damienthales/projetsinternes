@@ -64,6 +64,7 @@
                             return {
                                 emailLibelle: null,
                                 id: null,
+                                emailPrincipale: false,
                                 idCollaborateur: $stateParams.idCollaborateur
                             };
                         }
@@ -94,7 +95,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('email', null, { reload: true });
+                    $state.go('gestion-collaborateurs-detail', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });
@@ -118,7 +119,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('email', null, { reload: true });
+                    $state.go('gestion-collaborateurs-detail', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });

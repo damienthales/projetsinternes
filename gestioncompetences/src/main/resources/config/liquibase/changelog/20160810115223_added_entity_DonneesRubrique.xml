@@ -16,7 +16,7 @@
     <!--
         Added the entity DonneesRubrique.
     -->
-    <changeSet id="20160713094753-1" author="jhipster">
+    <changeSet id="20160810115223-1" author="jhipster">
         <createTable tableName="donnees_rubrique">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>

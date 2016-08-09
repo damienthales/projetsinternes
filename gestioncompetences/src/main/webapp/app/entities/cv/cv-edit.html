@@ -14,28 +14,34 @@
     		<input type="hidden" class="form-control" id="id" name="id" ng-model="vm.cv.id" />
     		
     		<div class="form-group row">
-	            <label class="col-sm-2 form-control-label" for="field_libelle">Libelle</label>
+	            <label class="col-sm-2 form-control-label" for="field_cvLibelle">Libelle</label>
 	            <div class="col-sm-6">
-	            	<input type="text" class="form-control" name="libelle" id="field_libelle" ng-model="vm.cv.libelle" required />
+	            	<input type="text" class="form-control" name="cvLibelle" id="field_cvLibelle" ng-model="vm.cv.cvLibelle" required />
+	            	<div ng-show="editForm.cvLibelle.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.cvLibelle.$error.required">
+		                    This field is required.
+		                </p>
+		            </div>
 	            </div>
 	        </div>
 	        <div class="form-group row">
-	            <label class="col-sm-2 form-control-label" for="field_dateCv">Date du CV</label>
+	            <label class="col-sm-2 form-control-label" for="field_cvDate">Date du CV</label>
 	            <div class="col-sm-6">
 	                <div class="input-group">
-	                    <input id="field_dateCv" type="text" class="form-control" name="dateCv" datetime-picker="dd/MM/yyyy" ng-model="vm.cv.dateCv" is-open="vm.datePickerOpenStatus.dateCv"
+	                    <input id="field_cvDate" type="text" class="form-control" name="cvDate" datetime-picker="dd/MM/yyyy" ng-model="vm.cv.cvDate" is-open="vm.datePickerOpenStatus.cvDate"
 	                    required />
 	                    <span class="input-group-btn">
-	                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCv')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('cvDate')"><i class="glyphicon glyphicon-calendar"></i></button>
 	                    </span>
 	                </div>
-		            <div ng-show="editForm.dateCv.$invalid">
+		            <div ng-show="editForm.cvDate.$invalid">
 		                <p class="help-block"
-		                    ng-show="editForm.dateCv.$error.required">
+		                    ng-show="editForm.cvDate.$error.required">
 		                    This field is required.
 		                </p>
 		                <p class="help-block"
-		                    ng-show="editForm.dateCv.$error.ZonedDateTimelocal">
+		                    ng-show="editForm.cvDate.$error.ZonedDateTimelocal">
 		                    This field should be a date and time.
 		                </p>
 		            </div>
@@ -63,7 +69,7 @@
 				    	<tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
 				    		<th jh-sort-by="libelle"><span>Libellé</span> <span class="glyphicon glyphicon-sort"></th>
 				    		<th jh-sort-by="rubrique"><span>Rubrique associée</span> <span class="glyphicon glyphicon-sort"></th>
-			                <th jh-sort-by="dateCv"><span>Date de début</span> <span class="glyphicon glyphicon-sort"></th>
+			                <th jh-sort-by="dateDebut"><span>Date de début</span> <span class="glyphicon glyphicon-sort"></th>
 			                <th jh-sort-by="ordre"><span>Ordre d'affichage</span> <span class="glyphicon glyphicon-sort"></th>
 			                <th></th>
 			            </tr>

@@ -67,7 +67,7 @@ class CVGatlingTest extends Simulation {
             .exec(http("Create new cV")
             .post("/api/c-vs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "dateCv":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "cvDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_cV_url"))).exitHereIfFailed
             .pause(10)

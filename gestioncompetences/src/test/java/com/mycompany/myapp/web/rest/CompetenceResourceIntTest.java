@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.mycompany.myapp.domain.enumeration.Niveaucompetence;
+import com.mycompany.myapp.domain.enumeration.NiveauCompetence;
 
 /**
  * Test class for the CompetenceResource REST controller.
@@ -50,8 +50,8 @@ public class CompetenceResourceIntTest {
     private static final String DEFAULT_COMPETENCE_CLIENT = "AAAAA";
     private static final String UPDATED_COMPETENCE_CLIENT = "BBBBB";
 
-    private static final Niveaucompetence DEFAULT_COMPETENCE_NIVEAUCOMPETENCE = Niveaucompetence.DECOUVRTE;
-    private static final Niveaucompetence UPDATED_COMPETENCE_NIVEAUCOMPETENCE = Niveaucompetence.OPERATIONNELLE;
+    private static final NiveauCompetence DEFAULT_COMPETENCE_NIVEAUCOMPETENCE = NiveauCompetence.DECOUVERTE;
+    private static final NiveauCompetence UPDATED_COMPETENCE_NIVEAUCOMPETENCE = NiveauCompetence.OPERATIONNELLE;
 
     @Inject
     private CompetenceRepository competenceRepository;
@@ -82,7 +82,7 @@ public class CompetenceResourceIntTest {
         competence.setCompetenceLibelle(DEFAULT_COMPETENCE_LIBELLE);
         competence.setCompetenceAnneesexperiences(DEFAULT_COMPETENCE_ANNEESEXPERIENCES);
         competence.setCompetenceClient(DEFAULT_COMPETENCE_CLIENT);
-        competence.setCompetenceNiveaucompetence(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE);
+        competence.setCompetenceNiveauCompetence(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE);
     }
 
     @Test
@@ -104,7 +104,7 @@ public class CompetenceResourceIntTest {
         assertThat(testCompetence.getCompetenceLibelle()).isEqualTo(DEFAULT_COMPETENCE_LIBELLE);
         assertThat(testCompetence.getCompetenceAnneesexperiences()).isEqualTo(DEFAULT_COMPETENCE_ANNEESEXPERIENCES);
         assertThat(testCompetence.getCompetenceClient()).isEqualTo(DEFAULT_COMPETENCE_CLIENT);
-        assertThat(testCompetence.getCompetenceNiveaucompetence()).isEqualTo(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE);
+        assertThat(testCompetence.getCompetenceNiveauCompetence()).isEqualTo(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class CompetenceResourceIntTest {
                 .andExpect(jsonPath("$.[*].competenceLibelle").value(hasItem(DEFAULT_COMPETENCE_LIBELLE.toString())))
                 .andExpect(jsonPath("$.[*].competenceAnneesexperiences").value(hasItem(DEFAULT_COMPETENCE_ANNEESEXPERIENCES.intValue())))
                 .andExpect(jsonPath("$.[*].competenceClient").value(hasItem(DEFAULT_COMPETENCE_CLIENT.toString())))
-                .andExpect(jsonPath("$.[*].competenceNiveaucompetence").value(hasItem(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE.toString())));
+                .andExpect(jsonPath("$.[*].competenceNiveauCompetence").value(hasItem(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE.toString())));
     }
 
     @Test
@@ -138,7 +138,7 @@ public class CompetenceResourceIntTest {
             .andExpect(jsonPath("$.competenceLibelle").value(DEFAULT_COMPETENCE_LIBELLE.toString()))
             .andExpect(jsonPath("$.competenceAnneesexperiences").value(DEFAULT_COMPETENCE_ANNEESEXPERIENCES.intValue()))
             .andExpect(jsonPath("$.competenceClient").value(DEFAULT_COMPETENCE_CLIENT.toString()))
-            .andExpect(jsonPath("$.competenceNiveaucompetence").value(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE.toString()));
+            .andExpect(jsonPath("$.competenceNiveauCompetence").value(DEFAULT_COMPETENCE_NIVEAUCOMPETENCE.toString()));
     }
 
     @Test
@@ -162,7 +162,7 @@ public class CompetenceResourceIntTest {
         updatedCompetence.setCompetenceLibelle(UPDATED_COMPETENCE_LIBELLE);
         updatedCompetence.setCompetenceAnneesexperiences(UPDATED_COMPETENCE_ANNEESEXPERIENCES);
         updatedCompetence.setCompetenceClient(UPDATED_COMPETENCE_CLIENT);
-        updatedCompetence.setCompetenceNiveaucompetence(UPDATED_COMPETENCE_NIVEAUCOMPETENCE);
+        updatedCompetence.setCompetenceNiveauCompetence(UPDATED_COMPETENCE_NIVEAUCOMPETENCE);
 
         restCompetenceMockMvc.perform(put("/api/competences")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -176,7 +176,7 @@ public class CompetenceResourceIntTest {
         assertThat(testCompetence.getCompetenceLibelle()).isEqualTo(UPDATED_COMPETENCE_LIBELLE);
         assertThat(testCompetence.getCompetenceAnneesexperiences()).isEqualTo(UPDATED_COMPETENCE_ANNEESEXPERIENCES);
         assertThat(testCompetence.getCompetenceClient()).isEqualTo(UPDATED_COMPETENCE_CLIENT);
-        assertThat(testCompetence.getCompetenceNiveaucompetence()).isEqualTo(UPDATED_COMPETENCE_NIVEAUCOMPETENCE);
+        assertThat(testCompetence.getCompetenceNiveauCompetence()).isEqualTo(UPDATED_COMPETENCE_NIVEAUCOMPETENCE);
     }
 
     @Test

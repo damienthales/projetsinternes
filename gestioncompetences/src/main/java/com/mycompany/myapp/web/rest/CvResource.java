@@ -1,12 +1,15 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Collaborateur;
 import com.mycompany.myapp.domain.Cv;
 import com.mycompany.myapp.domain.DonneesRubrique;
 import com.mycompany.myapp.domain.Rubrique;
+import com.mycompany.myapp.repository.CollaborateurRepository;
 import com.mycompany.myapp.repository.CvRepository;
 import com.mycompany.myapp.repository.DonneesRubriqueRepository;
 import com.mycompany.myapp.repository.RubriqueRepository;
+import com.mycompany.myapp.service.DocWriterService;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 
@@ -44,10 +47,16 @@ public class CvResource {
     private CvRepository cvRepository;
     
     @Inject
+    private CollaborateurRepository collaborateurRepository;
+    
+    @Inject
     private RubriqueRepository rubriqueRepository;
     
     @Inject
     private DonneesRubriqueRepository donneesRubriqueRepository;
+    
+    @Inject
+    private DocWriterService generationService;
     
     /**
      * POST  /cvs : Create a new cv.
@@ -170,5 +179,37 @@ public class CvResource {
         cvRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cv", id.toString())).build();
     }
-
+    
+    /**
+     * GENERATE  /cvs/:id : generate the cv.
+     *
+     * @param id the id of the cv to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the cv, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/cv/download/{id, isPdf}", 
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Cv> generateCv(@PathVariable Long id, @PathVariable boolean isPdf) {
+        log.debug("REST request to generate Cv : {}", id);
+        /*Cv cv = cvRepository.findOne(id);
+        
+        if (null != cv && null != cv.getIdCollaborateur()) {
+        	Collaborateur collab = collaborateurRepository.findOne(cv.getIdCollaborateur());
+        	generationService.writeFile(collab, cv, isPdf);
+        }
+        
+        return Optional.ofNullable(cv)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));*/
+        
+        Cv cv = cvRepository.findOne(id);
+        return Optional.ofNullable(cv)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }

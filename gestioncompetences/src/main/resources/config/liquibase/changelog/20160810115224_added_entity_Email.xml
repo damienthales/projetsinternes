@@ -16,12 +16,16 @@
     <!--
         Added the entity Email.
     -->
-    <changeSet id="20160713094754-1" author="jhipster">
+    <changeSet id="20160810115224-1" author="jhipster">
         <createTable tableName="email">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="email_libelle" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="email_is_principale" type="bit">
                 <constraints nullable="true" />
             </column>
             

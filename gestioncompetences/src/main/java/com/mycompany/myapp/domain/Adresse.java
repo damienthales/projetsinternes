@@ -44,6 +44,9 @@ public class Adresse implements Serializable {
     @Column(name = "adresse_pays")
     private String adressePays;
     
+    @Column(name = "adresse_is_principale")
+    private Boolean adressePrincipale;
+    
     @NotNull
     @Column(name = "collaborateur_id", nullable = false)
     private Long idCollaborateur;
@@ -103,6 +106,14 @@ public class Adresse implements Serializable {
     public void setAdressePays(String adressePays) {
         this.adressePays = adressePays;
     }
+
+	public Boolean getAdressePrincipale() {
+		return adressePrincipale;
+	}
+
+	public void setAdressePrincipale(Boolean adressePrincipale) {
+		this.adressePrincipale = adressePrincipale;
+	}
 
 	public Long getIdCollaborateur() {
 		return idCollaborateur;

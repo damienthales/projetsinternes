@@ -16,7 +16,7 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.dateCv = DateUtils.convertDateTimeFromServer(data.dateCv);
+                        data.cvDate = DateUtils.convertDateTimeFromServer(data.cvDate);
                     }
                     return data;
                 }

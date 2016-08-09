@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -14,19 +14,41 @@
                     ng-model="vm.cv.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_dateCv">Date Cv</label>
-                <div class="input-group">
-                    <input id="field_dateCv" type="text" class="form-control" name="dateCv" datetime-picker="{{dateformat}}" ng-model="vm.cv.dateCv" is-open="vm.datePickerOpenStatus.dateCv"
-                      />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCv')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
+            <label class="control-label" for="field_cvLibelle">Cv Libelle</label>
+            <input type="text" class="form-control" name="cvLibelle" id="field_cvLibelle"
+                    ng-model="vm.cv.cvLibelle"
+                    required />
+            <div ng-show="editForm.cvLibelle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cvLibelle.$error.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_libelle">Libelle</label>
-            <input type="text" class="form-control" name="libelle" id="field_libelle"
-                    ng-model="vm.cv.libelle"
+            <label class="control-label" for="field_cvDate">Cv Date</label>
+                <div class="input-group">
+                    <input id="field_cvDate" type="text" class="form-control" name="cvDate" datetime-picker="{{dateformat}}" ng-model="vm.cv.cvDate" is-open="vm.datePickerOpenStatus.cvDate"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('cvDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.cvDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cvDate.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cvDate.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cvEtat">Cv Etat</label>
+            <input type="text" class="form-control" name="cvEtat" id="field_cvEtat"
+                    ng-model="vm.cv.cvEtat"
                      />
         </div>
 

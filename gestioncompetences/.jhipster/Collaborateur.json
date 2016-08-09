@@ -55,6 +55,29 @@
       "relationshipName": "cv",
       "otherEntityName": "cv",
       "otherEntityRelationshipName": "collaborateur"
+    },
+    {
+      "relationshipId": 9,
+      "relationshipType": "one-to-many",
+      "relationshipName": "salaries",
+      "otherEntityName": "collaborateur",
+      "otherEntityRelationshipName": "manager"
+    },
+    {
+      "relationshipId": 10,
+      "relationshipType": "one-to-one",
+      "relationshipName": "typeCollaborateur",
+      "otherEntityName": "refTypeCollaborateur",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "collaborateur"
+    },
+    {
+      "relationshipId": 11,
+      "relationshipType": "many-to-one",
+      "relationshipName": "manager",
+      "otherEntityName": "collaborateur",
+      "otherEntityField": "id"
     }
   ],
   "fields": [
@@ -140,9 +163,14 @@
       "fieldName": "collaborateurLangue",
       "fieldType": "Langue",
       "fieldValues": "FRANCAIS,ANGLAIS,ALLEMAND,ESPAGNOL,AUTRE"
+    },
+    {
+      "fieldId": 12,
+      "fieldName": "collaborateurDateSortie",
+      "fieldType": "ZonedDateTime"
     }
   ],
-  "changelogDate": "20160713094744",
+  "changelogDate": "20160810115213",
   "dto": "no",
   "pagination": "infinite-scroll",
   "service": "no",

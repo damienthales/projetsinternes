@@ -18,16 +18,27 @@
   "fields": [
     {
       "fieldId": 1,
-      "fieldName": "dateCv",
-      "fieldType": "ZonedDateTime"
+      "fieldName": "cvLibelle",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldId": 2,
-      "fieldName": "libelle",
+      "fieldName": "cvDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "cvEtat",
       "fieldType": "String"
     }
   ],
-  "changelogDate": "20160713094751",
+  "changelogDate": "20160810115221",
   "dto": "no",
   "pagination": "infinite-scroll",
   "service": "no",

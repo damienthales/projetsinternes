@@ -9,7 +9,13 @@ entity Collaborateur {
 	collaborateurNombreEnfant Integer,
 	collaborateurDateArrivee ZonedDateTime required,
 	collaborateurPhoto ImageBlob,
-	collaborateurLangue Langue
+	collaborateurLangue Langue,
+	collaborateurDateSortie ZonedDateTime
+}
+
+entity RefTypeCollaborateur{
+	typeCollaborateurCode String required,
+	typeCollaborateurLibelle String required
 }
 
 
@@ -19,7 +25,8 @@ entity Adresse{
 	adresseVoie2 String,
 	adresseCodePostal String required,
 	adresseVille String required,
-	adressePays String
+	adressePays String,
+	adresseIsPrincipale Boolean
 }
 
 entity Fonction{
@@ -63,8 +70,9 @@ entity Diplome{
 }
 
 entity Cv{
-	dateCv ZonedDateTime
-	libelle String
+	cvLibelle String required,
+	cvDate ZonedDateTime required,
+	cvEtat String
 }
 
 entity Rubrique{
@@ -74,7 +82,7 @@ entity Rubrique{
 }
 
 enum TypeRubrique{
-	COMPETENCE, PROFESSIONNELLE, EXTRA, HOBBIE
+	COMPETENCE, LANGAGES, OUTILS, DONNEES, FONCTIONNELLES, LANGUES, FORMATIONS, PROFESSIONNELLE, EXTRA, HOBBIE
 }
 
 entity DonneesRubrique{
@@ -93,7 +101,8 @@ enum NiveauCompetence{
 }
 
 entity Email{
-	emailLibelle String
+	emailLibelle String required,
+	emailIsPrincipale Boolean
 }
 
 entity Telephone{
@@ -139,11 +148,19 @@ relationship OneToMany {
 }
 
 relationship OneToMany {
+	Collaborateur{salaries} to Collaborateur{manager}
+}
+
+relationship OneToMany {
 	Cv{cv} to DonneesRubrique{}
 }
 
 relationship OneToMany {
 	Rubrique{rubrique} to DonneesRubrique{}
+}
+
+relationship OneToOne {
+	Collaborateur{typeCollaborateur} to RefTypeCollaborateur{collaborateur}
 }
 
 

@@ -14,23 +14,19 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Classification.
+        Added the entity Formation.
     -->
-    <changeSet id="20160713094747-1" author="jhipster">
-        <createTable tableName="classification">
+    <changeSet id="20160810115218-1" author="jhipster">
+        <createTable tableName="formation">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="classification_nom" type="varchar(255)">
+            <column name="formation_nom" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             
-            <column name="classification_date_debut" type="timestamp">
+            <column name="formation_date" type="timestamp">
                 <constraints nullable="false" />
-            </column>
-            
-            <column name="classification_date_fin" type="timestamp">
-                <constraints nullable="true" />
             </column>
             
             <column name="collaborateur_id" type="bigint">
@@ -39,8 +35,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="classification" columnName="classification_date_debut" columnDataType="datetime"/>
-        <dropDefaultValue tableName="classification" columnName="classification_date_fin" columnDataType="datetime"/>
+        <dropDefaultValue tableName="formation" columnName="formation_date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

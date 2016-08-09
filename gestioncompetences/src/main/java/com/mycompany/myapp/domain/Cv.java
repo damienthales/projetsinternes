@@ -27,11 +27,16 @@ public class Cv implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "date_cv")
-    private ZonedDateTime dateCv;
+	@NotNull
+    @Column(name = "cv_date")
+    private ZonedDateTime cvDate;
 
-    @Column(name = "libelle")
-    private String libelle;
+	
+    @Column(name = "cv_libelle")
+    private String cvLibelle;
+    
+    @Column(name = "cv_etat")
+    private String cvEtat;
 
     @OneToMany(mappedBy = "idCv", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<DonneesRubrique> donnees = new HashSet<>();
@@ -48,20 +53,20 @@ public class Cv implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getDateCv() {
-        return dateCv;
+    public ZonedDateTime getCvDate() {
+        return cvDate;
     }
 
-    public void setDateCv(ZonedDateTime dateCv) {
-        this.dateCv = dateCv;
+    public void setCvDate(ZonedDateTime cvDate) {
+        this.cvDate = cvDate;
     }
 
-    public String getLibelle() {
-        return libelle;
+    public String getCvLibelle() {
+        return cvLibelle;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setCvLibelle(String cvLibelle) {
+        this.cvLibelle = cvLibelle;
     }
 
     public Set<DonneesRubrique> getDonnees() {
@@ -78,6 +83,14 @@ public class Cv implements Serializable {
 
 	public void setIdCollaborateur(Long idCollaborateur) {
 		this.idCollaborateur = idCollaborateur;
+	}
+
+	public String getCvEtat() {
+		return cvEtat;
+	}
+
+	public void setCvEtat(String cvEtat) {
+		this.cvEtat = cvEtat;
 	}
 
     @Override
@@ -104,8 +117,9 @@ public class Cv implements Serializable {
     public String toString() {
         return "Cv{" +
             "id=" + id +
-            ", dateCv='" + dateCv + "'" +
-            ", libelle='" + libelle + "'" +
+            ", cvLibelle='" + cvLibelle + "'" +
+            ", cvDate='" + cvDate + "'" +
+            ", cvEtat='" + cvEtat + "'" +
             '}';
     }
 }

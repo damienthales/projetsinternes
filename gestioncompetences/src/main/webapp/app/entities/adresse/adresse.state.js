@@ -69,6 +69,7 @@
                                 adresseVille: null,
                                 adressePays: null,
                                 id: null,
+                                adressePrincipale: false,
                                 idCollaborateur: $stateParams.idCollaborateur
                             };
                         }

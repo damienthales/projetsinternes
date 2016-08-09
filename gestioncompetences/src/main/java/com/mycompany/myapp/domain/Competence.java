@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.mycompany.myapp.domain.enumeration.Niveaucompetence;
+import com.mycompany.myapp.domain.enumeration.NiveauCompetence;
 
 /**
  * A Competence.
@@ -34,7 +34,7 @@ public class Competence implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "competence_niveaucompetence")
-    private Niveaucompetence competenceNiveaucompetence;
+    private NiveauCompetence competenceNiveauCompetence;
 
     @ManyToOne
     private Collaborateur collaborateur;
@@ -71,12 +71,12 @@ public class Competence implements Serializable {
         this.competenceClient = competenceClient;
     }
 
-    public Niveaucompetence getCompetenceNiveaucompetence() {
-        return competenceNiveaucompetence;
+    public NiveauCompetence getCompetenceNiveauCompetence() {
+        return competenceNiveauCompetence;
     }
 
-    public void setCompetenceNiveaucompetence(Niveaucompetence competenceNiveaucompetence) {
-        this.competenceNiveaucompetence = competenceNiveaucompetence;
+    public void setCompetenceNiveauCompetence(NiveauCompetence competenceNiveauCompetence) {
+        this.competenceNiveauCompetence = competenceNiveauCompetence;
     }
 
     public Collaborateur getCollaborateur() {
@@ -114,7 +114,7 @@ public class Competence implements Serializable {
             ", competenceLibelle='" + competenceLibelle + "'" +
             ", competenceAnneesexperiences='" + competenceAnneesexperiences + "'" +
             ", competenceClient='" + competenceClient + "'" +
-            ", competenceNiveaucompetence='" + competenceNiveaucompetence + "'" +
+            ", competenceNiveauCompetence='" + competenceNiveauCompetence + "'" +
             '}';
     }
 }

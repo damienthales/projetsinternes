@@ -14,33 +14,23 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Fonction.
+        Added the entity RefTypeCollaborateur.
     -->
-    <changeSet id="20160713094746-1" author="jhipster">
-        <createTable tableName="fonction">
+    <changeSet id="20160810115214-1" author="jhipster">
+        <createTable tableName="ref_type_collaborateur">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="fonction_nom" type="varchar(255)">
+            <column name="type_collaborateur_code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             
-            <column name="fonction_date_debut" type="timestamp">
+            <column name="type_collaborateur_libelle" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             
-            <column name="fonction_date_fin" type="timestamp">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="collaborateur_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="fonction" columnName="fonction_date_debut" columnDataType="datetime"/>
-        <dropDefaultValue tableName="fonction" columnName="fonction_date_fin" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

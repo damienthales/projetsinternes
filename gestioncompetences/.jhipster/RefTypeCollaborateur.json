@@ -2,16 +2,17 @@
   "relationships": [
     {
       "relationshipId": 1,
-      "relationshipType": "many-to-one",
+      "relationshipType": "one-to-one",
       "relationshipName": "collaborateur",
       "otherEntityName": "collaborateur",
-      "otherEntityField": "id"
+      "ownerSide": false,
+      "otherEntityRelationshipName": "typeCollaborateur"
     }
   ],
   "fields": [
     {
       "fieldId": 1,
-      "fieldName": "diplomeNom",
+      "fieldName": "typeCollaborateurCode",
       "fieldType": "String",
       "fieldValidateRules": [
         "required"
@@ -19,16 +20,16 @@
     },
     {
       "fieldId": 2,
-      "fieldName": "diplomeDate",
-      "fieldType": "ZonedDateTime",
+      "fieldName": "typeCollaborateurLibelle",
+      "fieldType": "String",
       "fieldValidateRules": [
         "required"
       ]
     }
   ],
-  "changelogDate": "20160810115220",
+  "changelogDate": "20160810115214",
   "dto": "no",
   "pagination": "no",
   "service": "no",
-  "entityTableName": "diplome"
+  "entityTableName": "ref_type_collaborateur"
 }

@@ -73,6 +73,7 @@
 	                    <th jh-sort-by="adresseCodePostal"><span>Code Postal</span> <span class="glyphicon glyphicon-sort"></span></th>
 	                    <th jh-sort-by="adresseVille"><span>Ville</span> <span class="glyphicon glyphicon-sort"></span></th>
 	                    <th jh-sort-by="adressePays"><span>Pays</span> <span class="glyphicon glyphicon-sort"></span></th>
+	                    <th jh-sort-by="adresseIsPrincipale"><span>Principale</span> <span class="glyphicon glyphicon-sort"></span></th>
 	                    <th></th>
 	                </tr>
 		        </thead>
@@ -84,6 +85,10 @@
 		                <td>{{adresse.adresseCodePostal}}</td>
 		                <td>{{adresse.adresseVille}}</td>
 		                <td>{{adresse.adressePays}}</td>
+		                <td>
+		                	<span ng-show="adresse.adressePrincipale"><span class="glyphicon glyphicon-check text-success btn-xl"/></span>
+		                    <span ng-hide="adresse.adressePrincipale"><span class="glyphicon glyphicon-unchecked text-error btn-xl"/></span>
+		                </td>
 		                <td class="text-right">
 		                    <div class="btn-group flex-btn-group-container">
 		                         <button type="submit"
@@ -129,12 +134,17 @@
 	            <thead>
 	            	<tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
 	                    <th jh-sort-by="emailLibelle"><span>Adresse mail</span> <span class="glyphicon glyphicon-sort"></th>
+	                    <th jh-sort-by="emailIsPrincipale"><span>Principale</span> <span class="glyphicon glyphicon-sort"></span></th>
 	                    <th></th>
 	                </tr>
 	            </thead>
 	            <tbody>
 	                <tr ng-repeat="email in vm.collaborateur.emails track by email.id">
 	                    <td>{{email.emailLibelle}}</td>
+	                    <td>
+		                	<span ng-show="email.emailPrincipale"><span class="glyphicon glyphicon-check text-success btn-xl"/></span>
+		                    <span ng-hide="email.emailPrincipale"><span class="glyphicon glyphicon-unchecked text-error btn-xl"/></span>
+		                </td>
 	                    <td class="text-right">
 	                        <div class="btn-group flex-btn-group-container">
 	                            <button type="submit"
@@ -395,15 +405,15 @@
 		    <table class="jh-table table table-striped">
 			    <thead>
 			    	<tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-		                <th jh-sort-by="dateCv"><span>Date de création</span> <span class="glyphicon glyphicon-sort"></th>
-		                <th jh-sort-by="libelle"><span>Libellé</span> <span class="glyphicon glyphicon-sort"></th>
+		                <th jh-sort-by="cvDate"><span>Date de création</span> <span class="glyphicon glyphicon-sort"></th>
+		                <th jh-sort-by="cvLibelle"><span>Libellé</span> <span class="glyphicon glyphicon-sort"></th>
 		                <th></th>
 		            </tr>
 		        </thead>
 		        <tbody>
 		            <tr ng-repeat="cv in vm.collaborateur.cvs track by cv.id">
-		                <td>{{cv.dateCv | date:'dd/MM/yyyy'}}</td>
-		                <td>{{cv.libelle}}</td>
+		                <td>{{cv.cvDate | date:'dd/MM/yyyy'}}</td>
+		                <td>{{cv.cvLibelle}}</td>
 		                <td class="text-right">
 		                    <div class="btn-group flex-btn-group-container">
 			                    <button type="submit"
@@ -413,17 +423,23 @@
 		                            <span class="hidden-xs hidden-sm"></span>
 		                        </button>
 		                        <button type="submit"
-			                            ui-sref="cv-detail({id:cv.id})"
-			                            class="btn btn-success btn-sm" title="Génération">
-			                        <span class="glyphicon glyphicon-cloud-upload"></span>
-			                        <span class="hidden-xs hidden-sm"></span>
-			                    </button>
-		                        <button type="submit"
 		                                ui-sref="cv.delete({id:cv.id})"
 		                                class="btn btn-danger btn-sm" title="Suppression">
 		                            <span class="glyphicon glyphicon-remove-circle"></span>
 		                            <span class="hidden-xs hidden-sm"></span>
 		                        </button>
+		                        <button type="button"
+			                            class="btn btn-link btn-sm" style="color:red" 
+			                            title="Génération du CV en PDF" ng-click="vm.generate(cv.id, true)">
+			                        <span class="fa fa-file-pdf-o"></span>
+			                        <span class="hidden-xs hidden-sm"></span>
+			                    </button>
+			                    <button type="button"
+			                            class="btn btn-link btn-sm" style="color:blue" 
+			                            title="Génération du CV en DOCX" ng-click="vm.generate(cv.id, false)">
+			                        <span class="fa fa-file-word-o"></span>
+			                        <span class="hidden-xs hidden-sm"></span>
+			                    </button>
 		                    </div>
 		                </td>
 		            </tr>

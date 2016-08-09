@@ -35,7 +35,7 @@
       "fieldId": 2,
       "fieldName": "rubriqueTypeRubrique",
       "fieldType": "TypeRubrique",
-      "fieldValues": "COMPETENCE,PROFESSIONNELLE,EXTRA,HOBBIE"
+      "fieldValues": "COMPETENCE,LANGAGES,OUTILS,DONNEES,FONCTIONNELLES,LANGUES,FORMATIONS,PROFESSIONNELLE,EXTRA,HOBBIE"
     },
     {
       "fieldId": 3,
@@ -43,7 +43,7 @@
       "fieldType": "Boolean"
     }
   ],
-  "changelogDate": "20160713094752",
+  "changelogDate": "20160810115222",
   "dto": "no",
   "pagination": "infinite-scroll",
   "service": "no",

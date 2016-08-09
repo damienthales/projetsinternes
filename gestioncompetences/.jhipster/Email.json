@@ -12,10 +12,18 @@
     {
       "fieldId": 1,
       "fieldName": "emailLibelle",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "emailIsPrincipale",
+      "fieldType": "Boolean"
     }
   ],
-  "changelogDate": "20160713094754",
+  "changelogDate": "20160810115224",
   "dto": "no",
   "pagination": "no",
   "service": "no",

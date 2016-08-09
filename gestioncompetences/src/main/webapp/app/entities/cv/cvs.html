@@ -19,8 +19,9 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dateCv"><span>Date Cv</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="libelle"><span>Libelle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cvLibelle"><span>Cv Libelle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cvDate"><span>Cv Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cvEtat"><span>Cv Etat</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="collaborateur.id"><span>Collaborateur</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -28,8 +29,9 @@
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="cv in vm.cvs track by cv.id">
                     <td><a ui-sref="cv-detail({id:cv.id})">{{cv.id}}</a></td>
-                    <td>{{cv.dateCv | date:'medium'}}</td>
-                    <td>{{cv.libelle}}</td>
+                    <td>{{cv.cvLibelle}}</td>
+                    <td>{{cv.cvDate | date:'medium'}}</td>
+                    <td>{{cv.cvEtat}}</td>
                     <td>
                         <a ui-sref="collaborateur-detail({id:cv.collaborateur.id})">{{cv.collaborateur.id}}</a>
                     </td>

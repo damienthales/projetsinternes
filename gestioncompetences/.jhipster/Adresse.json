@@ -50,9 +50,14 @@
       "fieldId": 6,
       "fieldName": "adressePays",
       "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "adresseIsPrincipale",
+      "fieldType": "Boolean"
     }
   ],
-  "changelogDate": "20160713094745",
+  "changelogDate": "20160810115215",
   "dto": "no",
   "pagination": "infinite-scroll",
   "service": "no",
